@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lakes and Ladders — Board Game Pop-Up Shop (Queenstown)</title>
+  <meta name="description" content="Lakes and Ladders — a friendly board game pop-up shop in Queenstown, New Zealand. Learn games fast, try before you buy, and find your next favorite." />
+  <style>
+    :root{
+      --bg: #0b2230;
+      --bg2:#0f2f41;
+      --card:#0e2a3a;
+      --text:#eaf4fb;
+      --muted:#b7d0e2;
+      --brand:#1f6f9a;
+      --brand2:#6aaed6;
+      --ring: rgba(106, 174, 214, .35);
+      --shadow: 0 12px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+      --max: 1100px;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 70% -10%, rgba(106,174,214,.25), transparent 60%),
+        radial-gradient(900px 500px at 20% 0%, rgba(31,111,154,.35), transparent 55%),
+        linear-gradient(180deg, var(--bg) 0%, #081a24 100%);
+      line-height:1.5;
+    }
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 70px}
+
+    /* Top bar */
+    .top{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:14px;
+      position:sticky; top:0;
+      backdrop-filter: blur(10px);
+      background: rgba(11,34,48,.55);
+      border-bottom:1px solid rgba(255,255,255,.08);
+      z-index:10;
+      padding:14px 18px;
+    }
+    .top .brand{
+      display:flex; align-items:center; gap:12px;
+      text-decoration:none;
+      min-width: 220px;
+    }
+    .top img{
+      width:42px; height:42px; border-radius:12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,.25);
+      background: rgba(255,255,255,.06);
+    }
+    .top .brand b{letter-spacing:.4px}
+    .top nav{display:flex; gap:16px; flex-wrap:wrap; justify-content:flex-end}
+    .top nav a{
+      text-decoration:none; color:var(--muted);
+      font-weight:600; font-size:14px;
+      padding:8px 10px; border-radius:12px;
+    }
+    .top nav a:hover{background: rgba(255,255,255,.06); color:var(--text)}
+    .top .cta{
+      display:flex; gap:10px; align-items:center; justify-content:flex-end;
+      min-width: 220px;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:10px 14px;
+      border-radius:14px;
+      font-weight:800;
+      text-decoration:none;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+    }
+    .btn:hover{border-color: rgba(255,255,255,.25)}
+    .btn.primary{
+      background: linear-gradient(135deg, var(--brand) 0%, var(--brand2) 100%);
+      border-color: transparent;
+      color:#072130;
+      box-shadow: 0 12px 26px rgba(31,111,154,.35);
+    }
+    .btn.primary:hover{filter: brightness(1.05)}
+    .pill{
+      font-size:12px; font-weight:800; letter-spacing:.3px;
+      padding:6px 10px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.06);
+      color: var(--muted);
+      white-space:nowrap;
+    }
+
+    /* Hero */
+    .hero{
+      padding:34px 0 10px;
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:28px;
+      align-items:center;
+    }
+    .heroCard{
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow: var(--shadow);
+      padding:26px;
+      position:relative;
+      overflow:hidden;
+    }
+    .heroCard:before{
+      content:"";
+      position:absolute; inset:-60px -80px auto auto;
+      width:260px; height:260px;
+      background: radial-gradient(circle at 30% 30%, rgba(106,174,214,.45), transparent 60%);
+      transform: rotate(18deg);
+    }
+    .kicker{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+      margin-bottom:14px;
+    }
+    h1{
+      margin:0 0 10px;
+      font-size: clamp(34px, 4.6vw, 54px);
+      line-height:1.05;
+      letter-spacing:-.8px;
+    }
+    .lead{
+      margin:0 0 18px;
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 60ch;
+    }
+    .heroActions{display:flex; gap:12px; flex-wrap:wrap; margin-top:10px}
+    .micro{
+      margin-top:14px;
+      color: rgba(183,208,226,.9);
+      font-size: 13px;
+    }
+    .heroSide{
+      display:grid;
+      gap:14px;
+    }
+    .sideCard{
+      border-radius: var(--radius);
+      background: rgba(14,42,58,.7);
+      border:1px solid rgba(255,255,255,.10);
+      box-shadow: 0 10px 25px rgba(0,0,0,.25);
+      padding:18px;
+    }
+    .sideCard h3{margin:0 0 6px; font-size:16px}
+    .sideCard p{margin:0; color:var(--muted); font-size:14px}
+    .logoBig{
+      width:100%;
+      border-radius: var(--radius);
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.06);
+      box-shadow: 0 18px 40px rgba(0,0,0,.35);
+      padding:14px;
+      display:flex; align-items:center; justify-content:center;
+      min-height: 220px;
+    }
+    .logoBig img{
+      max-width: 100%;
+      height:auto;
+      display:block;
+      border-radius: 14px;
+    }
+
+    /* Sections */
+    section{margin-top:34px}
+    .sectionHead{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:12px; flex-wrap:wrap;
+      margin-bottom:14px;
+    }
+    .sectionHead h2{margin:0; font-size:22px; letter-spacing:-.3px}
+    .sectionHead span{color:var(--muted); font-weight:700; font-size:14px}
+
+    .grid3{display:grid; grid-template-columns: repeat(3, 1fr); gap:14px}
+    .grid2{display:grid; grid-template-columns: repeat(2, 1fr); gap:14px}
+    .card{
+      border-radius: var(--radius);
+      background: rgba(14,42,58,.65);
+      border:1px solid rgba(255,255,255,.10);
+      padding:18px;
+      box-shadow: 0 10px 22px rgba(0,0,0,.22);
+    }
+    .card h3{margin:0 0 8px; font-size:16px}
+    .card p{margin:0; color:var(--muted); font-size:14px}
+    .list{
+      margin:10px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size:14px;
+    }
+    .tagRow{display:flex; flex-wrap:wrap; gap:8px; margin-top:12px}
+    .tag{
+      font-size:12px; font-weight:800;
+      padding:6px 10px; border-radius:999px;
+      background: rgba(106,174,214,.12);
+      border: 1px solid rgba(106,174,214,.22);
+      color: #d7ecfb;
+    }
+
+    /* Feature strip */
+    .strip{
+      border-radius: calc(var(--radius) + 6px);
+      background: linear-gradient(135deg, rgba(31,111,154,.25), rgba(106,174,214,.10));
+      border:1px solid rgba(255,255,255,.12);
+      padding:18px;
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+    }
+    .strip b{font-size:16px}
+    .strip small{color:var(--muted); display:block; margin-top:4px}
+
+    /* Footer */
+    footer{
+      margin-top:40px;
+      padding-top:22px;
+      border-top:1px solid rgba(255,255,255,.10);
+      color: rgba(183,208,226,.85);
+      font-size:13px;
+      display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
+    }
+    .footerLinks{display:flex; gap:14px; flex-wrap:wrap}
+    .footerLinks a{color: rgba(183,208,226,.85); text-decoration:none}
+    .footerLinks a:hover{color: var(--text)}
+
+    /* Responsive */
+    @media (max-width: 920px){
+      .hero{grid-template-columns: 1fr; }
+      .top{position:relative}
+      .top nav{justify-content:flex-start}
+      .top .cta{min-width: auto}
+      .grid3{grid-template-columns: 1fr}
+      .grid2{grid-template-columns: 1fr}
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Sticky top bar -->
+  <header class="top">
+    <a class="brand" href="#top">
+      <!-- Small icon: swap to Logo.png if you prefer -->
+      <img src="Logo.png" alt="Lakes and Ladders icon" />
+      <div>
+        <b>Lakes and Ladders</b><br />
+        <span style="color:var(--muted); font-size:12px; font-weight:700;">Queenstown • Board games</span>
+      </div>
+    </a>
+
+    <nav aria-label="Primary">
+      <a href="#how">How it works</a>
+      <a href="#games">Games</a>
+      <a href="#events">Events</a>
+      <a href="#location">Find us</a>
+    </nav>
+
+    <div class="cta">
+      <span class="pill">Try • Learn • Buy</span>
+      <a class="btn primary" href="#events">Book a table</a>
+    </div>
+  </header>
+
+  <main id="top" class="wrap">
+    <!-- Hero -->
+    <div class="hero">
+      <div class="heroCard">
+        <div class="kicker">
+          <span class="pill">Board Game Pop-Up Shop</span>
+          <span class="pill">Queenstown, New Zealand</span>
+        </div>
+
+        <h1>Board games that actually get played.</h1>
+        <p class="lead">
+          Lakes and Ladders is a friendly pop-up where you can <b>learn a game in minutes</b>,
+          try it with your group, and grab a copy to take home.
+        </p>
+
+        <div class="heroActions">
+          <a class="btn primary" href="#events">See pop-up times</a>
+          <a class="btn" href="#games">Browse game styles</a>
+          <a class="btn" href="#location">Where we’ll be</a>
+        </div>
+
+        <p class="micro">
+          Perfect for hostels, travellers, rainy days, and “we want to do something tonight” energy.
+        </p>
+      </div>
+
+      <div class="heroSide">
+        <div class="logoBig" aria-label="Lakes and Ladders logo">
+          <!-- Big logo with text -->
+          <img src="Logo With Text.png" alt="Lakes and Ladders logo with text" />
+        </div>
+
+        <div class="sideCard">
+          <h3>Quick recommendations</h3>
+          <p>Tell us your group size + vibe (chill, chaotic, clever, competitive) and we’ll match a game fast.</p>
+        </div>
+
+        <div class="sideCard">
+          <h3>Learn in 3 minutes</h3>
+          <p>We teach rules clearly, set you up, and you’re playing—no 40-page manual suffering.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature strip -->
+    <section>
+      <div class="strip">
+        <div>
+          <b>Want a “Game Night in a Box” vibe?</b>
+          <small>We can recommend 1–2 games that fit your exact group and time window.</small>
+        </div>
+        <a class="btn" href="#events">Ask for a recommendation</a>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section id="how">
+      <div class="sectionHead">
+        <h2>How it works</h2>
+        <span>Simple, fast, no awkwardness</span>
+      </div>
+
+      <div class="grid3">
+        <div class="card">
+          <h3>1) Pick your vibe</h3>
+          <p>Party, strategy, co-op, two-player, quick filler, or “teach us something weird”.</p>
+          <div class="tagRow">
+            <span class="tag">Party</span><span class="tag">Co-op</span><span class="tag">Strategy</span><span class="tag">2-player</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>2) We teach the rules</h3>
+          <p>We’ll do a crisp intro, first turn guidance, and set you loose.</p>
+          <ul class="list">
+            <li>Beginner-friendly</li>
+            <li>Fast setup</li>
+            <li>Zero intimidation</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>3) Play + take it home</h3>
+          <p>Try before you buy when available, or grab a recommendation you’ll genuinely replay.</p>
+          <ul class="list">
+            <li>Gift suggestions</li>
+            <li>Traveller-friendly sizes</li>
+            <li>Group-proof picks</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Games -->
+    <section id="games">
+      <div class="sectionHead">
+        <h2>Find your kind of fun</h2>
+        <span>Curated categories (replace with your real inventory later)</span>
+      </div>
+
+      <div class="grid2">
+        <div class="card">
+          <h3>Quick & loud (10–20 mins)</h3>
+          <p>Perfect for pre-drinks, common rooms, and big groups who want instant energy.</p>
+          <ul class="list">
+            <li>Easy to learn</li>
+            <li>Lots of laughter</li>
+            <li>Low downtime</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Brainy & satisfying (30–60 mins)</h3>
+          <p>For people who want clever choices, tense moments, and a proper win.</p>
+          <ul class="list">
+            <li>Strategy / tactics</li>
+            <li>Co-op puzzles</li>
+            <li>Light to medium weight</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Chill & social (20–45 mins)</h3>
+          <p>Talky games, deduction, storytelling, and “I can’t believe you just did that” moments.</p>
+          <ul class="list">
+            <li>Social deduction</li>
+            <li>Creative party</li>
+            <li>Conversation starters</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Traveller-friendly (small box)</h3>
+          <p>Easy to pack, easy to set up, and great in cafes or on rainy days.</p>
+          <ul class="list">
+            <li>Compact</li>
+            <li>Fast setup</li>
+            <li>2–6 players</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Events / CTA -->
+    <section id="events">
+      <div class="sectionHead">
+        <h2>Pop-up times & bookings</h2>
+        <span>Add real dates/locations once confirmed</span>
+      </div>
+
+      <div class="grid2">
+        <div class="card">
+          <h3>Upcoming pop-ups</h3>
+          <p>
+            Replace this block with your actual schedule (markets, hostels, cafes, festivals).
+          </p>
+          <ul class="list">
+            <li><b>Friday:</b> Example venue • 6pm–9pm</li>
+            <li><b>Saturday:</b> Example market • 10am–2pm</li>
+            <li><b>Sunday:</b> Example cafe • 1pm–4pm</li>
+          </ul>
+          <div class="heroActions" style="margin-top:14px;">
+            <a class="btn primary" href="#location">Get directions</a>
+            <a class="btn" href="#contact">Host us</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Book a game table (prototype)</h3>
+          <p>
+            This is a placeholder. When you’re ready, connect a Google Form, Calendly, or a simple booking widget.
+          </p>
+          <ul class="list">
+            <li>Group size</li>
+            <li>Time slot</li>
+            <li>Preferred vibe</li>
+          </ul>
+          <div class="heroActions" style="margin-top:14px;">
+            <a class="btn primary" href="mailto:hello@lakesandladders.nz?subject=Booking%20request%20—%20Lakes%20and%20Ladders">Email to book</a>
+            <a class="btn" href="#games">Help me choose</a>
+          </div>
+          <p class="micro">Tip: use a dedicated email like <b>hello@lakesandladders.nz</b> when you set up your domain.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Location -->
+    <section id="location">
+      <div class="sectionHead">
+        <h2>Find us in Queenstown</h2>
+        <span>Pop-up • markets • partner venues</span>
+      </div>
+
+      <div class="grid2">
+        <div class="card">
+          <h3>Where we operate</h3>
+          <p>
+            We pop up around Queenstown. Follow socials for the weekly spot.
+            (Replace these bullets with your real venues.)
+          </p>
+          <ul class="list">
+            <li>Partner cafes / bars</li>
+            <li>Hostels & common rooms</li>
+            <li>Weekend markets</li>
+            <li>Community events</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Map placeholder</h3>
+          <p>
+            Drop in a Google Maps embed here later, or just list venues + dates.
+          </p>
+          <div style="margin-top:12px; border-radius:14px; border:1px dashed rgba(255,255,255,.18); padding:16px; color:var(--muted);">
+            Map embed goes here
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="sectionHead">
+        <h2>Work with us</h2>
+        <span>Hostels, bars, cafes, events</span>
+      </div>
+
+      <div class="grid3">
+        <div class="card">
+          <h3>Host a pop-up</h3>
+          <p>We bring games, teach rules, and create an easy “instant activity” for guests.</p>
+        </div>
+        <div class="card">
+          <h3>Game nights</h3>
+          <p>Run a regular night at your venue—newcomer-friendly and staff-light.</p>
+        </div>
+        <div class="card">
+          <h3>Private groups</h3>
+          <p>Birthdays, team nights, travellers—tell us the vibe and we’ll curate.</p>
+        </div>
+      </div>
+
+      <div class="strip" style="margin-top:14px;">
+        <div>
+          <b>Let’s set something up.</b>
+          <small>Email us your venue + preferred day/time, and we’ll propose a simple plan.</small>
+        </div>
+        <a class="btn primary" href="mailto:hello@lakesandladders.nz?subject=Hosting%20request%20—%20Lakes%20and%20Ladders">Email hello@…</a>
+      </div>
+    </section>
+
+    <footer>
+      <div>© <span id="year"></span> Lakes and Ladders • Queenstown, New Zealand</div>
+      <div class="footerLinks">
+        <a href="#top">Back to top</a>
+        <a href="#events">Pop-ups</a>
+        <a href="#contact">Contact</a>
+        <!-- Replace with real links -->
+        <a href="#" aria-label="Instagram link placeholder">Instagram</a>
+        <a href="#" aria-label="Facebook link placeholder">Facebook</a>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
