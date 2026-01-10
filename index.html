@@ -99,7 +99,7 @@
       display:grid;
       grid-template-columns: 1.15fr .85fr;
       gap:28px;
-      align-items:center;
+      align-items:stretch;
     }
     .heroCard{
       border-radius: var(--radius);
@@ -139,9 +139,14 @@
       color: rgba(183,208,226,.9);
       font-size: 13px;
     }
+    .heroCard,
+    .heroSide{
+      height:100%;
+    }
     .heroSide{
       display:grid;
       gap:14px;
+      grid-template-rows: repeat(3, 1fr);
     }
     .sideCard{
       border-radius: var(--radius);
@@ -167,6 +172,31 @@
       height:auto;
       display:block;
       border-radius: 14px;
+    }
+
+    .imageBanner{
+      margin-top:20px;
+    }
+    .imageFrame{
+      border-radius: calc(var(--radius) + 6px);
+      background: rgba(14,42,58,.55);
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow: var(--shadow);
+      padding:18px;
+      min-height: 220px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      color: var(--muted);
+      font-weight:700;
+    }
+    .imageFrame img{
+      width:100%;
+      height:auto;
+      border-radius: 16px;
+      display:block;
+      object-fit:cover;
     }
 
     /* Sections */
@@ -266,6 +296,13 @@
   </header>
 
   <main id="top" class="wrap">
+    <section class="imageBanner" aria-label="Feature image">
+      <div class="imageFrame">
+        <!-- Replace the src with your featured image -->
+        <img src="Logo - Clean.png" alt="Featured image placeholder" />
+      </div>
+    </section>
+
     <!-- Hero -->
     <div class="hero">
       <div class="heroCard">
