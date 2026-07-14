@@ -139,14 +139,8 @@
       color: rgba(183,208,226,.9);
       font-size: 13px;
     }
-    .heroCard,
     .heroSide{
-      height:100%;
-    }
-    .heroSide{
-      display:grid;
-      gap:14px;
-      grid-template-rows: repeat(3, 1fr);
+      display:flex;
     }
     .sideCard{
       border-radius: var(--radius);
@@ -158,6 +152,7 @@
     .sideCard h3{margin:0 0 6px; font-size:16px}
     .sideCard p{margin:0; color:var(--muted); font-size:14px}
     .logoBig{
+      flex:1;
       width:100%;
       border-radius: var(--radius);
       border:1px solid rgba(255,255,255,.10);
@@ -323,7 +318,6 @@
 
     <nav aria-label="Primary">
       <a href="#how">How it works</a>
-      <a href="#games">Games</a>
       <a href="#events">Events</a>
       <a href="#location">Find us</a>
     </nav>
@@ -350,7 +344,6 @@
 
         <div class="heroActions">
           <a class="btn primary" href="#events">See pop-up times</a>
-          <a class="btn" href="#games">Browse game styles</a>
           <a class="btn" href="#location">Where we’ll be</a>
         </div>
 
@@ -412,53 +405,6 @@
             <li>Gift suggestions</li>
             <li>Traveller-friendly sizes</li>
             <li>Group-proof picks</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Games -->
-    <section id="games">
-      <div class="sectionHead">
-        <h2>Find your kind of fun</h2>
-        <span>Curated categories (replace with your real inventory later)</span>
-      </div>
-
-      <div class="grid2">
-        <div class="card">
-          <h3>Quick & loud (10–20 mins)</h3>
-          <p>Perfect for pre-drinks, common rooms, and big groups who want instant energy.</p>
-          <ul class="list">
-            <li>Easy to learn</li>
-            <li>Lots of laughter</li>
-            <li>Low downtime</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Brainy & satisfying (30–60 mins)</h3>
-          <p>For people who want clever choices, tense moments, and a proper win.</p>
-          <ul class="list">
-            <li>Strategy / tactics</li>
-            <li>Co-op puzzles</li>
-            <li>Light to medium weight</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Chill & social (20–45 mins)</h3>
-          <p>Talky games, deduction, storytelling, and “I can’t believe you just did that” moments.</p>
-          <ul class="list">
-            <li>Social deduction</li>
-            <li>Creative party</li>
-            <li>Conversation starters</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Traveller-friendly (small box)</h3>
-          <p>Easy to pack, easy to set up, and great in cafes or on rainy days.</p>
-          <ul class="list">
-            <li>Compact</li>
-            <li>Fast setup</li>
-            <li>2–6 players</li>
           </ul>
         </div>
       </div>
