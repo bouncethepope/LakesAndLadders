@@ -174,11 +174,29 @@
       border-radius: 14px;
     }
 
+    .eventBanner{
+      margin-bottom:14px;
+      border-radius:calc(var(--radius) + 6px);
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow:var(--shadow);
+      background:rgba(255,255,255,.94);
+    }
+    .eventBanner img{
+      width:100%;
+      height:auto;
+      display:block;
+    }
     .eventFeature{
       display:grid;
       grid-template-columns:minmax(280px, .75fr) minmax(0, 1.25fr);
       gap:14px;
       align-items:stretch;
+    }
+    .eventMedia{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
     }
     .imageFrame{
       border-radius: calc(var(--radius) + 6px);
@@ -202,6 +220,12 @@
       display:block;
       object-fit:contain;
       background:#07131a;
+    }
+    .eventCaption{
+      margin:0;
+      padding:0 4px;
+      color:var(--muted);
+      font-size:14px;
     }
     .eventBooking{
       display:flex;
@@ -447,20 +471,32 @@
         <span>Private events • hosted sessions • tournaments</span>
       </div>
 
+      <div class="eventBanner">
+        <img
+          src="media/dates-and-ladders-love-on-tap-banner.png"
+          alt="Dates and Ladders — Love on Tap speed dating"
+        />
+      </div>
+
       <div class="eventFeature">
-        <div class="imageFrame">
-          <video
-            autoplay
-            muted
-            loop
-            playsinline
-            preload="metadata"
-            poster="Logo - Clean.png"
-            aria-label="Lakes and Ladders promotional video"
-          >
-            <source src="media/lakes-and-ladders-promo.mp4" type="video/mp4" />
-            Your browser does not support embedded video.
-          </video>
+        <div class="eventMedia">
+          <div class="imageFrame">
+            <video
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="metadata"
+              poster="Logo - Clean.png"
+              aria-label="Lakes and Ladders promotional video"
+            >
+              <source src="media/lakes-and-ladders-promo.mp4" type="video/mp4" />
+              Your browser does not support embedded video.
+            </video>
+          </div>
+          <p class="eventCaption">
+            ‘Love on Tap’ is our speed-dating event hosted at a brewery near you! Keep your eyes peeled for the next events running in Otago.
+          </p>
         </div>
 
         <div class="card eventBooking">
@@ -481,22 +517,6 @@
             <a class="btn primary" href="mailto:admin@lakesandladders.com?subject=Event%20booking%20enquiry%20%E2%80%94%20Lakes%20and%20Ladders">Contact us</a>
           </div>
         </div>
-      </div>
-
-      <div class="card" style="margin-top:14px;">
-          <h3>Book a game table</h3>
-          <p>
-            Want to buy, learn and play a larger game? We're partnered with the Beach Tree pub, and will happily show you the rules to any of our larger products there after any selling period. Just let the staff know on the stall, and we can pop up once our time selling is done, and help guide you through your first game.
-          </p>
-          <ul class="list">
-            <li>Group size</li>
-            <li>Time slot</li>
-            <li>Game name</li>
-          </ul>
-          <div class="heroActions" style="margin-top:14px;">
-            <a class="btn primary" href="mailto:admin@lakesandladders.com?subject=Booking%20request%20—%20Lakes%20and%20Ladders">Email to book</a>
-            <a class="btn" href="#games">Help me choose</a>
-          </div>
       </div>
     </section>
 
