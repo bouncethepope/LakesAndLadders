@@ -139,14 +139,8 @@
       color: rgba(183,208,226,.9);
       font-size: 13px;
     }
-    .heroCard,
     .heroSide{
-      height:100%;
-    }
-    .heroSide{
-      display:grid;
-      gap:14px;
-      grid-template-rows: repeat(3, 1fr);
+      display:flex;
     }
     .sideCard{
       border-radius: var(--radius);
@@ -158,6 +152,7 @@
     .sideCard h3{margin:0 0 6px; font-size:16px}
     .sideCard p{margin:0; color:var(--muted); font-size:14px}
     .logoBig{
+      flex:1;
       width:100%;
       border-radius: var(--radius);
       border:1px solid rgba(255,255,255,.10);
@@ -174,8 +169,29 @@
       border-radius: 14px;
     }
 
-    .imageBanner{
-      margin-top:20px;
+    .eventBanner{
+      margin-bottom:14px;
+      border-radius:calc(var(--radius) + 6px);
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow:var(--shadow);
+      background:rgba(255,255,255,.94);
+    }
+    .eventBanner img{
+      width:100%;
+      height:auto;
+      display:block;
+    }
+    .eventFeature{
+      display:grid;
+      grid-template-columns:minmax(280px, .75fr) minmax(0, 1.25fr);
+      gap:14px;
+      align-items:stretch;
+    }
+    .eventMedia{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
     }
     .imageFrame{
       border-radius: calc(var(--radius) + 6px);
@@ -191,12 +207,29 @@
       color: var(--muted);
       font-weight:700;
     }
-    .imageFrame img{
-      width:100%;
-      height:auto;
+    .imageFrame video{
+      width:auto;
+      max-width:100%;
+      height:min(72vh, 720px);
       border-radius: 16px;
       display:block;
-      object-fit:cover;
+      object-fit:contain;
+      background:#07131a;
+    }
+    .eventCaption{
+      margin:0;
+      padding:0 4px;
+      color:var(--muted);
+      font-size:14px;
+    }
+    .eventBooking{
+      display:flex;
+      flex-direction:column;
+    }
+    .eventBooking p + p{margin-top:14px}
+    .eventBooking .heroActions{
+      margin-top:auto;
+      padding-top:18px;
     }
 
     /* Sections */
@@ -266,6 +299,7 @@
       .top .cta{min-width: auto}
       .grid3{grid-template-columns: 1fr}
       .grid2{grid-template-columns: 1fr}
+      .eventFeature{grid-template-columns: 1fr}
     }
   </style>
 </head>
@@ -284,7 +318,6 @@
 
     <nav aria-label="Primary">
       <a href="#how">How it works</a>
-      <a href="#games">Games</a>
       <a href="#events">Events</a>
       <a href="#location">Find us</a>
     </nav>
@@ -295,13 +328,6 @@
   </header>
 
   <main id="top" class="wrap">
-    <section class="imageBanner" aria-label="Feature image">
-      <div class="imageFrame">
-        <!-- Replace the src with your featured image -->
-        <img src="Logo - Clean.png" alt="Featured image placeholder" />
-      </div>
-    </section>
-
     <!-- Hero -->
     <div class="hero">
       <div class="heroCard">
@@ -318,7 +344,6 @@
 
         <div class="heroActions">
           <a class="btn primary" href="#events">See pop-up times</a>
-          <a class="btn" href="#games">Browse game styles</a>
           <a class="btn" href="#location">Where we’ll be</a>
         </div>
 
@@ -385,91 +410,57 @@
       </div>
     </section>
 
-    <!-- Games -->
-    <section id="games">
-      <div class="sectionHead">
-        <h2>Find your kind of fun</h2>
-        <span>Curated categories (replace with your real inventory later)</span>
-      </div>
-
-      <div class="grid2">
-        <div class="card">
-          <h3>Quick & loud (10–20 mins)</h3>
-          <p>Perfect for pre-drinks, common rooms, and big groups who want instant energy.</p>
-          <ul class="list">
-            <li>Easy to learn</li>
-            <li>Lots of laughter</li>
-            <li>Low downtime</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Brainy & satisfying (30–60 mins)</h3>
-          <p>For people who want clever choices, tense moments, and a proper win.</p>
-          <ul class="list">
-            <li>Strategy / tactics</li>
-            <li>Co-op puzzles</li>
-            <li>Light to medium weight</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Chill & social (20–45 mins)</h3>
-          <p>Talky games, deduction, storytelling, and “I can’t believe you just did that” moments.</p>
-          <ul class="list">
-            <li>Social deduction</li>
-            <li>Creative party</li>
-            <li>Conversation starters</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Traveller-friendly (small box)</h3>
-          <p>Easy to pack, easy to set up, and great in cafes or on rainy days.</p>
-          <ul class="list">
-            <li>Compact</li>
-            <li>Fast setup</li>
-            <li>2–6 players</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
     <!-- Events / CTA -->
     <section id="events">
       <div class="sectionHead">
-        <h2>Pop-up times & bookings</h2>
-        <span>February pop-ups</span>
+        <h2>Events & bookings</h2>
+        <span>Private events • hosted sessions • tournaments</span>
       </div>
 
-      <div class="grid2">
-        <div class="card">
-          <h3>Upcoming pop-ups</h3>
-          <p>
-            Drop by for a quick demo, a browse, or to grab a new game for the trip.
-          </p>
-          <ul class="list">
-            <li><b>Thursday 5th Feb:</b> 12–1, 3–4</li>
-            <li><b>Friday 6th Feb:</b> 10–5 (periodically)</li>
-            <li><b>Saturday 7th Feb:</b> 12–1, 3–4</li>
-            <li><b>Sunday 8th Feb:</b> 6–7 (Lates and Ladders Event)</li>
-          </ul>
-          <div class="heroActions" style="margin-top:14px;">
-            <a class="btn primary" href="#location">Get directions</a>
-            <a class="btn" href="#contact">Host us</a>
+      <div class="eventBanner">
+        <img
+          src="media/dates-and-ladders-love-on-tap-banner.png"
+          alt="Dates and Ladders — Love on Tap speed dating"
+        />
+      </div>
+
+      <div class="eventFeature">
+        <div class="eventMedia">
+          <div class="imageFrame">
+            <video
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="metadata"
+              poster="Logo - Clean.png"
+              aria-label="Lakes and Ladders promotional video"
+            >
+              <source src="media/lakes-and-ladders-promo.mp4" type="video/mp4" />
+              Your browser does not support embedded video.
+            </video>
           </div>
+          <p class="eventCaption">
+            ‘Love on Tap’ is our speed-dating event hosted at a brewery near you! Keep your eyes peeled for the next events running in Otago.
+          </p>
         </div>
 
-        <div class="card">
-          <h3>Book a game table</h3>
+        <div class="card eventBooking">
+          <h3>Book Lakes and Ladders for Your Event</h3>
           <p>
-            Want to buy, learn and play a larger game? We're partnered with the Beach Tree pub, and will happily show you the rules to any of our larger products there after any selling period. Just let the staff know on the stall, and we can pop up once our time selling is done, and help guide you through your first game.
+            Looking for a unique way to bring people together? Lakes and Ladders brings a curated collection of modern board games to your event, creating a fun, social atmosphere that's perfect for breaking the ice and getting people talking.
           </p>
-          <ul class="list">
-            <li>Group size</li>
-            <li>Time slot</li>
-            <li>Game name</li>
-          </ul>
-          <div class="heroActions" style="margin-top:14px;">
-            <a class="btn primary" href="mailto:admin@lakesandladders.com?subject=Booking%20request%20—%20Lakes%20and%20Ladders">Email to book</a>
-            <a class="btn" href="#games">Help me choose</a>
+          <p>
+            We provide the games, teach everyone how to play, and facilitate the experience so guests can simply relax and enjoy themselves. Whether it's a corporate team-building event, birthday party, community gathering, private function, or festival, we tailor the game selection to suit your group and the style of your event.
+          </p>
+          <p>
+            Our setup is fully mobile and can be hosted at your venue or ours, with options ranging from casual drop-in gaming to structured hosted sessions and tournaments.
+          </p>
+          <p>
+            To discuss your event or request a quote, get in touch through our website or social media. We'd love to help create an event your guests will remember.
+          </p>
+          <div class="heroActions">
+            <a class="btn primary" href="mailto:admin@lakesandladders.com?subject=Event%20booking%20enquiry%20%E2%80%94%20Lakes%20and%20Ladders">Contact us</a>
           </div>
         </div>
       </div>
